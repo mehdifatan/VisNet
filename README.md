@@ -1,6 +1,6 @@
 # VisNet Library
 
-A structured Python library implementing biologically-inspired hierarchical vision networks based on the Rolls 2015 paper.
+A structured Python library implementing biologically-inspired hierarchical vision networks based on the Rolls 2021 paper.
 
 ## Structure
 
@@ -52,4 +52,5 @@ See `examples/run_comparison.py` for usage examples.
 ## License
 
 MIT
+
 

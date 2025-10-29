@@ -55,20 +55,6 @@ The **visnet-li** model builds directly on visnet-simplified by introducing **lo
 
 This simple modification emulates cortical lateral inhibition: neurons with similar tuning profiles within a spatial neighborhood mutually suppress each other, promoting **sparsity, decorrelation, and feature competition**. As a result, visnet-li maintains the computational simplicity of the simplified model while reintroducing a biologically relevant mechanism that encourages more selective and stable representations.
 
-## Repository Structure
-
-```
-visnet/
-├── visnet-simplified/       # Baseline dense model
-├── visnet-rbf/              # RBF neuron variant
-├── visnet-md/               # Mahalanobis distance learning variant
-├── visnet-li/               # Local inhibition variant
-├── models/                  # Core layer implementations
-├── training/                # Training loops and learning rules
-├── experiments/            # Example scripts for datasets
-└── utils/                   # Visualization and preprocessing helpers
-```
-
 ## Installation
 
 ```bash
@@ -106,3 +92,4 @@ model.visualize_layer(layer_index=0)
 * Benchmark symmetry perception tasks on synthetic datasets
 * Curriculum-based invariance learning
 * Compare visnet-md and visnet-li with modern SSL methods (SimCLR, BYOL)
+

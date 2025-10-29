@@ -63,21 +63,6 @@ cd visnet-bioinspired
 pip install -r requirements.txt
 ```
 
-## Quickstart Example
-
-```python
-from visnet.models import VisNet
-
-# Initialize any variant
-model = VisNet(variant='visnet-rbf', num_layers=4, gabor_frontend=True)
-
-# Train unsupervised
-model.train_unsupervised(dataset, epochs=50)
-
-# Visualize receptive fields
-model.visualize_layer(layer_index=0)
-```
-
 ## References
 
 * T. Solls, 2021. *Original VisNet architecture paper*.
@@ -92,4 +77,5 @@ model.visualize_layer(layer_index=0)
 * Benchmark symmetry perception tasks on synthetic datasets
 * Curriculum-based invariance learning
 * Compare visnet-md and visnet-li with modern SSL methods (SimCLR, BYOL)
+
 

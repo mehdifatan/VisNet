@@ -58,8 +58,8 @@ This simple modification emulates cortical lateral inhibition: neurons with simi
 ## Installation
 
 ```bash
-git clone https://github.com/<username>/visnet-bioinspired.git
-cd visnet-bioinspired
+git clone https://github.com/mehdifatan/VisNet.git
+cd VisNet
 pip install -r requirements.txt
 ```
 
@@ -88,4 +88,5 @@ pip install -r requirements.txt
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 

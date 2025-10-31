@@ -65,11 +65,16 @@ pip install -r requirements.txt
 
 ## References
 
-* T. Solls, 2021. *Original VisNet architecture paper*.
-* Bishop, C. M., 1995. *Neural Networks for Pattern Recognition*.
-* Hebb, D. O., 1949. *The Organization of Behavior*.
-* Mahalanobis, P. C., 1936. *Generalized distance in statistics*.
-* Hubel, D. H., Wiesel, T. N., 1962. *Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex*.
+1. Rolls, E. T. (2021). *Learning invariant object and spatial view representations in the brain using slow unsupervised learning.* Frontiers in Computational Neuroscience, 15, 686239. [https://doi.org/10.3389/fncom.2021.686239](https://doi.org/10.3389/fncom.2021.686239)
+
+2. Bishop, C. M. (1995). *Neural Networks for Pattern Recognition.* Oxford University Press.
+
+3. Hebb, D. O. (1949). *The Organization of Behavior: A Neuropsychological Theory.* Wiley.
+
+4. Mahalanobis, P. C. (1936). *On the generalized distance in statistics.* Proceedings of the National Institute of Sciences of India, 2, 49–55.
+
+5. Hubel, D. H., & Wiesel, T. N. (1962). *Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex.* The Journal of Physiology, 160, 106–154. [https://doi.org/10.1113/jphysiol.1962.sp006837](https://doi.org/10.1113/jphysiol.1962.sp006837)
+
 
 ## Roadmap
 
@@ -88,5 +93,6 @@ pip install -r requirements.txt
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 

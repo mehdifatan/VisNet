@@ -79,3 +79,13 @@ pip install -r requirements.txt
 * Compare visnet-md and visnet-li with modern SSL methods (SimCLR, BYOL)
 
 
+## Citation
+
+@misc{fatan2025visnet,
+  author       = {Mehdi Fatan Serj},
+  title        = {VisNet: Biologically-Inspired Hierarchical Visual Model (GitHub repository)},
+  year         = {2025},
+  howpublished = {\url{https://github.com/mehdifatan/VisNet}},
+  note         = {Accessed: 2025-10-31}
+}
+

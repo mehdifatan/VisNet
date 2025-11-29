@@ -86,6 +86,17 @@ pip install -r requirements.txt
 
 ## Citation
 
+If you use this repository or the extended VisNet variants, please cite the paper:
+
+@article{fatan2025improvingvisnet,
+  title   = {Improving VisNet for Object Recognition},
+  author  = {Fatan Serj, Mehdi and Parraga, C. Alejandro and Otazu, Xavier},
+  journal = {arXiv preprint arXiv:2511.08897},
+  year    = {2025}
+}
+
+And optionally the GitHub repository:
+
 @misc{fatan2025visnet,
   author       = {Mehdi Fatan Serj},
   title        = {VisNet: Biologically-Inspired Hierarchical Visual Model (GitHub repository)},
@@ -93,6 +104,9 @@ pip install -r requirements.txt
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
+
+
 
 
 

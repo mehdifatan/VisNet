@@ -23,23 +23,26 @@ This simplified model is crucial, however, for ablation analysis: improvements a
 
 ## visnet-rbf: Localized Gaussian Coding via Radial Basis Neurons
 
-The **visnet-rbf** variant replaces traditional McCulloch–Pitts-style neurons with Gaussian radial basis (RBF) units. Instead of producing a broad linear response influenced by the entire high-dimensional input, RBF neurons yield a *localized peak response* around a learned prototype (center). Their activation falls off smoothly as the input deviates from this prototype, following a Gaussian kernel.
+The visnet-rbf variant replaces traditional McCulloch–Pitts-style neurons with Gaussian radial basis (RBF) units. Instead of producing a broad linear response influenced by the entire high-dimensional input, RBF neurons yield a localized peak response around a learned prototype represented by the weight vector w. Their activation falls off smoothly as the input deviates from this prototype, following a Gaussian kernel.
 
-This modification is biologically motivated by the selective tuning properties of neurons found in extrastriate visual cortex (V4 and IT), where responses are not globally linear but instead respond strongly to a narrow class of visual features or patterns. Mathematically, the neuron implements:
+This modification is biologically motivated by the selective tuning properties of neurons found in extrastriate visual cortex (V4 and IT), where responses are not globally linear but instead respond strongly to a narrow class of visual features or patterns.
 
-φ(x) = exp( - ||x - c||² / (2σ²) )
+Mathematically, the neuron implements:
+
+φ(x) = exp( - ||x - w||² / (2σ²) )
+
 
 where:
 
 x = input feature vector
 
-c = learned prototype (center)
+w = learned prototype (weight vector)
 
 σ = receptive field width
 
-The center c functions as a stored prototype encoded by the weight vector. This shifts learning from amplitude-driven encoding to prototype-driven similarity coding, making the network more robust to irrelevant variations.
+The weight vector w functions as a stored prototype. This shifts learning from amplitude-driven encoding (global weighted summation) to prototype-driven similarity coding, making the network more robust to irrelevant variations.
 
-In the context of symmetry perception and structured pattern recognition, Gaussian tuning offers a crucial advantage: it enforces **feature locality**, enabling the model to detect subtle structured correspondences (e.g., reflective or bilateral relations) that would be blurred out in a purely dense linear neuron model. This makes visnet-rbf well-suited for biologically plausible intermediate representations of symmetric stimuli.
+In the context of symmetry perception and structured pattern recognition, Gaussian tuning offers a crucial advantage: it enforces feature locality, enabling the model to detect subtle structured correspondences (e.g., reflective or bilateral relations) that would be blurred in a purely dense linear neuron model. This makes visnet-rbf well-suited for biologically plausible intermediate representations of symmetric stimuli.
 
 ## visnet-md: Mahalanobis Distance for Covariance-Aware Learning
 
@@ -118,6 +121,7 @@ And optionally the GitHub repository:
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 
 

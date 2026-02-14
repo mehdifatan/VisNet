@@ -43,21 +43,25 @@ In the context of symmetry perception and structured pattern recognition, Gaussi
 
 ## visnet-md: Mahalanobis Distance for Covariance-Aware Learning
 
-The **visnet-md** variant replaces the Euclidean-distance-based similarity computation at the core of classical VisNet-style learning with a Mahalanobis-metric formulation. Unlike Euclidean distance, which assumes that all dimensions are independent and identically scaled, the Mahalanobis metric incorporates the covariance structure of the neural representation. This enables neurons to learn tuning surfaces that reflect not only average feature prototypes (centers) but also the *statistical geometry* of the stimulus manifold.
+The visnet-md variant replaces the Euclidean similarity metric used in classical VisNet-style learning with a Mahalanobis distance formulation. Unlike Euclidean distance, which assumes independent and equally scaled feature dimensions, the Mahalanobis metric incorporates the covariance structure of the neural representation. This allows the model to account for the statistical geometry of the stimulus manifold during learning.
 
-Whereas RBF neurons assume isotropic Gaussian tuning, Mahalanobis units can learn *anisotropic tuning ellipsoids* that shrink or stretch along directions of high or low variance. This allows the model to develop **adaptive feature selectivity** that reflects stimulus statistics. Concretely, the activation of a neuron becomes:
+The squared Mahalanobis distance between an input vector x and a weight vector w is defined as:
 
-φ(x) = exp( -1/2 * (x - μ)^T Σ⁻¹ (x - μ) )
+d_M²(x, w) = (x − w)ᵀ Σ⁻¹ (x − w)
+
 
 where:
 
-μ = learned center
+w = learned weight vector (prototype)
 
-Σ = covariance matrix estimated from feature activations. 
+Σ = covariance matrix estimated from feature activations
 
-Biologically, this corresponds to the emergence of *statistically aligned receptive fields*, which has been hypothesized in IT cortex, where neuronal tuning adapts to the intrinsic structure of the visual feature space.
+In visnet-md, this distance term defines the geometry of synaptic adaptation. The gradient of the Mahalanobis distance with respect to the weight vector drives learning, yielding covariance-aware updates of the form:
 
-By incorporating the local covariance structure of layer activations, visnet-md improves selectivity under structured transformations, particularly when feature classes share overlapping raw representations but differ in higher-order dependencies. This makes it particularly valuable in symmetry perception, where covariance relationships between opposing visual fields encode midline structure. In short, visnet-md bridges the gap between biologically motivated receptive field formation and modern statistical manifold learning.
+Δw ∝ Σ⁻¹ (x − w)
+
+
+Importantly, neuronal activation itself follows the standard VisNet competitive structure (e.g., visnet-li). The Mahalanobis formulation modifies the learning dynamics, not the response mechanism.
 
 ## visnet-li: Local Inhibition Applied to visnet-simplified
 
@@ -114,6 +118,7 @@ And optionally the GitHub repository:
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 
 

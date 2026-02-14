@@ -27,9 +27,7 @@ The **visnet-rbf** variant replaces traditional McCulloch–Pitts-style neurons 
 
 This modification is biologically motivated by the selective tuning properties of neurons found in extrastriate visual cortex (V4 and IT), where responses are not globally linear but instead respond strongly to a narrow class of visual features or patterns. Mathematically, the neuron implements:
 
-[
-\phi(\mathbf{x}) = \exp\left(-\frac{||\mathbf{x} - \mathbf{c}||^2}{2\sigma^2}\right)
-]
+φ(x) = exp( - ||x - c||² / (2σ²) )
 
 where the center **c** functions as a prototype encoded by the weight vector. This ensures that learning is *prototype-driven rather than amplitude-driven*, making the network more robust to irrelevant variations.
 
@@ -41,9 +39,7 @@ The **visnet-md** variant replaces the Euclidean-distance-based similarity compu
 
 Whereas RBF neurons assume isotropic Gaussian tuning, Mahalanobis units can learn *anisotropic tuning ellipsoids* that shrink or stretch along directions of high or low variance. This allows the model to develop **adaptive feature selectivity** that reflects stimulus statistics. Concretely, the activation of a neuron becomes:
 
-[
-\phi(\mathbf{x}) = \exp\left(-\frac{1}{2} (\mathbf{x}-\mathbf{\mu})^T \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu}) \right)
-]
+φ(x) = exp( -1/2 * (x - μ)^T Σ⁻¹ (x - μ) )
 
 where (\mathbf{\Sigma}) is the covariance matrix estimated from input feature activations. Biologically, this corresponds to the emergence of *statistically aligned receptive fields*, which has been hypothesized in IT cortex, where neuronal tuning adapts to the intrinsic structure of the visual feature space.
 
@@ -104,6 +100,7 @@ And optionally the GitHub repository:
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 
 

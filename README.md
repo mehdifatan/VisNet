@@ -38,7 +38,7 @@ x = input feature vector
 
 w = learned prototype (weight vector)
 
-σ = receptive field width
+σ = feature-space tuning bandwidth controlling selectivity
 
 The weight vector w functions as a stored prototype. This shifts learning from amplitude-driven encoding (global weighted summation) to prototype-driven similarity coding, making the network more robust to irrelevant variations.
 
@@ -121,6 +121,7 @@ And optionally the GitHub repository:
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 
 

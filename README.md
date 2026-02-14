@@ -29,7 +29,15 @@ This modification is biologically motivated by the selective tuning properties o
 
 φ(x) = exp( - ||x - c||² / (2σ²) )
 
-where the center **c** functions as a prototype encoded by the weight vector. This ensures that learning is *prototype-driven rather than amplitude-driven*, making the network more robust to irrelevant variations.
+where:
+
+x = input feature vector
+
+c = learned prototype (center)
+
+σ = receptive field width
+
+The center c functions as a stored prototype encoded by the weight vector. This shifts learning from amplitude-driven encoding to prototype-driven similarity coding, making the network more robust to irrelevant variations.
 
 In the context of symmetry perception and structured pattern recognition, Gaussian tuning offers a crucial advantage: it enforces **feature locality**, enabling the model to detect subtle structured correspondences (e.g., reflective or bilateral relations) that would be blurred out in a purely dense linear neuron model. This makes visnet-rbf well-suited for biologically plausible intermediate representations of symmetric stimuli.
 
@@ -41,7 +49,13 @@ Whereas RBF neurons assume isotropic Gaussian tuning, Mahalanobis units can lear
 
 φ(x) = exp( -1/2 * (x - μ)^T Σ⁻¹ (x - μ) )
 
-where (\mathbf{\Sigma}) is the covariance matrix estimated from input feature activations. Biologically, this corresponds to the emergence of *statistically aligned receptive fields*, which has been hypothesized in IT cortex, where neuronal tuning adapts to the intrinsic structure of the visual feature space.
+where:
+
+μ = learned center
+
+Σ = covariance matrix estimated from feature activations. 
+
+Biologically, this corresponds to the emergence of *statistically aligned receptive fields*, which has been hypothesized in IT cortex, where neuronal tuning adapts to the intrinsic structure of the visual feature space.
 
 By incorporating the local covariance structure of layer activations, visnet-md improves selectivity under structured transformations, particularly when feature classes share overlapping raw representations but differ in higher-order dependencies. This makes it particularly valuable in symmetry perception, where covariance relationships between opposing visual fields encode midline structure. In short, visnet-md bridges the gap between biologically motivated receptive field formation and modern statistical manifold learning.
 
@@ -100,6 +114,7 @@ And optionally the GitHub repository:
   howpublished = {\url{https://github.com/mehdifatan/VisNet}},
   note         = {Accessed: 2025-10-31}
 }
+
 
 
 

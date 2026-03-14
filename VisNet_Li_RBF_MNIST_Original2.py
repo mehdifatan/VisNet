@@ -497,26 +497,41 @@ def compute_activations_2d_circular_L1(input_data, SynMat):
     
     
 def apply_local_inhibition_and_sparseness(activations, inhibition_strength=1.0):
-    
-    
-    #batch,fs=activations.shape
-    
-    inhibited_activations = torch.zeros_like(activations)
-    
-    # Calculate k for kthvalue (must be between 1 and n, 1-based indexing)
-    n_features = activations.shape[1]
-    k_raw = int((1 - inhibition_strength) * n_features)
-    # Clamp k to valid range [1, n_features]
-    k = max(1, min(k_raw, n_features))
-    
-    # Assuming inhibited_activations is empty
-    inhibited_activations = torch.where(
-        # Calculate threshold per column (assuming k-th largest per column)
-        torch.kthvalue(activations, k, dim=1, keepdim=True)[0] 
-        <= activations,
-        activations,
-        -0.0*torch.ones_like(activations))
 
+    # Ensure 2D tensor [batch, neurons]
+    if activations.dim() == 0:
+        activations = activations.unsqueeze(0).unsqueeze(0)
+    elif activations.dim() == 1:
+        activations = activations.unsqueeze(0)
+    elif activations.dim() > 2:
+        activations = activations.squeeze()
+        activations = activations.unsqueeze(0)
+
+    batch_size, n_features = activations.shape
+
+    # number of winners inside each neighbourhood
+    k_raw = int((1 - inhibition_strength) * n_features)
+    k = max(1, min(k_raw, n_features))
+
+    # replicate activations for each neuron/neighbourhood
+    # shape: [batch, neurons, neurons]
+    act_rep = activations.unsqueeze(1).repeat(1, n_features, 1)
+
+    # apply receptive field mask
+    masked_act = act_rep * all_mask  # all_mask shape [neurons, neurons]
+
+    # compute kth threshold inside each neighbourhood
+    thresh = torch.kthvalue(masked_act, k, dim=2, keepdim=True)[0]
+
+    # keep winners per neighbourhood
+    local_winners = torch.where(
+        masked_act >= thresh,
+        masked_act,
+        torch.zeros_like(masked_act)
+    )
+
+    # aggregate overlapping neighbourhoods
+    inhibited_activations = torch.max(local_winners, dim=1)[0]
 
     return inhibited_activations
     
